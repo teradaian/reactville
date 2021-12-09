@@ -3,8 +3,7 @@ import Ingredient from "./Ingredient"
 
 const BurgerStack = ({ ingredients, hasBuns, removeBuns, removeFromBurger }) => {
 
-  const bun = hasBuns && ingredients.map((ingredient, idx) => (
-    ingredient.type === 'bun' &&
+  const bun = hasBuns && ingredients.filter(el => el.type === 'bun').map((ingredient, idx) => (
     <Ingredient key={`bun-${idx}`} ingredient={ingredient} removeFromBurger={removeBuns} />
   ))
 
