@@ -5,9 +5,7 @@ const BurgerStack = ({ ingredients, hasBuns, removeBuns, removeFromBurger }) => 
 
   const bun = hasBuns ? ingredients.filter(el => el.type === 'bun').map((ingredient, idx) => (
     <Ingredient key={`bun-${idx}`} ingredient={ingredient} removeFromBurger={removeBuns} />
-  ))
-  :
-  ""
+  )) : ""
 
   const fillings = ingredients.map((ingredient, idx) => (
     ingredient.type !== 'bun' &&
