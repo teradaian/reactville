@@ -8,7 +8,8 @@ const BurgerStack = (props) => {
     <Ingredient key={`bun-${idx}`} ingredient={ingredient} removeFromBurger={props.removeBuns} />
   ))
 
-  const fillingStack = props.ingredients.filter(el => el.type !== 'bun').map((ingredient, idx) => (
+  const fillingStack = props.ingredients.map((ingredient, idx) => (
+    ingredient.type !== 'bun' &&
     <Ingredient key={idx} idx={idx} ingredient={ingredient} removeFromBurger={props.removeFromBurger} />
   )).reverse()
 
