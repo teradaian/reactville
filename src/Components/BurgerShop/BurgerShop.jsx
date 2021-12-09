@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../../styles/burger.css'
 
 import IngredientList from './IngredientList'
@@ -8,6 +8,11 @@ import { ingredients } from '../../data/burger-data'
 
 const BurgerShop = () => {
   const [stack, setStack] = useState([])
+  const [hasBuns, setHasBuns] = useState(false)
+
+	useEffect(() => {
+		setHasBuns(stack.filter(el => el.type === 'bun'))
+	}, [stack])
 
   const addToBurger = (ingredient) => {
     setStack([...stack, ingredient])
@@ -25,7 +30,7 @@ const BurgerShop = () => {
       </nav>
       <section>
         <IngredientList ingredients={ingredients} stack={stack} addToBurger={addToBurger} />
-        <BurgerStack ingredients={stack} removeFromBurger={removeFromBurger} />
+        <BurgerStack ingredients={stack} hasBuns={hasBuns} removeFromBurger={removeFromBurger} />
       </section>
     </div>
   )
