@@ -1,23 +1,23 @@
 import React from "react"
 import Ingredient from "./Ingredient"
 
-const BurgerStack = (props) => {
+const BurgerStack = ({ ingredients, hasBuns, removeBuns, removeFromBurger }) => {
 
-  const bunBracket = props.hasBuns && props.ingredients.map((ingredient, idx) => (
+  const bun = hasBuns && ingredients.map((ingredient, idx) => (
     ingredient.type === 'bun' &&
-    <Ingredient key={`bun-${idx}`} ingredient={ingredient} removeFromBurger={props.removeBuns} />
+    <Ingredient key={`bun-${idx}`} ingredient={ingredient} removeFromBurger={removeBuns} />
   ))
 
-  const fillingStack = props.ingredients.map((ingredient, idx) => (
+  const fillings = ingredients.map((ingredient, idx) => (
     ingredient.type !== 'bun' &&
-    <Ingredient key={idx} idx={idx} ingredient={ingredient} removeFromBurger={props.removeFromBurger} />
+    <Ingredient key={idx} idx={idx} ingredient={ingredient} removeFromBurger={removeFromBurger} />
   )).reverse()
 
-  const balancedBurger = [bunBracket || "", ...fillingStack, bunBracket || ""]
+  const balancedBurger = [bun || "", ...fillings, bun || ""]
 
   return (
     <ul className="burger-stack">
-      {props.ingredients.length ?
+      {ingredients.length ?
         balancedBurger
         :
         <div>
