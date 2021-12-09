@@ -12,7 +12,7 @@ const BurgerStack = (props) => {
     <Ingredient key={idx} idx={idx} ingredient={ingredient} removeFromBurger={props.removeFromBurger} />
   )).reverse()
 
-  const balancedBurger = [bunBracket, ...fillingStack, bunBracket]
+  const balancedBurger = [bunBracket || "", ...fillingStack, bunBracket || ""]
 
   return (
     <ul className="burger-stack">
