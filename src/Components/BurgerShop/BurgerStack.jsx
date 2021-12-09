@@ -9,10 +9,8 @@ const BurgerStack = (props) => {
 
   const balancedBuns = array => {
 		if (!props.hasBuns) return
-		const bun = array.indexOf(el => el.type === 'bun')
-		console.log(bun)
-		const fillings = array.filter(el => el.type !== 'bun')
-		console.log(fillings)
+		const bun = array.find(el => el.props.ingredient.type === 'bun')
+		const fillings = array.filter(el => el.props.ingredient.type !== 'bun')
 	}
 
 	balancedBuns(burgerStack)

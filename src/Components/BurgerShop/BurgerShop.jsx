@@ -11,7 +11,7 @@ const BurgerShop = () => {
   const [hasBuns, setHasBuns] = useState(false)
 
 	useEffect(() => {
-		setHasBuns(stack.filter(el => el.type === 'bun'))
+		setHasBuns(stack.filter(el => el.type === 'bun').length === 2)
 	}, [stack])
 
   const addToBurger = (ingredient) => {
@@ -29,7 +29,7 @@ const BurgerShop = () => {
         <button onClick={() => setStack([])}>Clear Order</button>
       </nav>
       <section>
-        <IngredientList ingredients={ingredients} stack={stack} addToBurger={addToBurger} />
+        <IngredientList ingredients={ingredients} stack={stack} hasBuns={hasBuns} addToBurger={addToBurger} />
         <BurgerStack ingredients={stack} hasBuns={hasBuns} removeFromBurger={removeFromBurger} />
       </section>
     </div>
